@@ -2,7 +2,7 @@ pipeline:
   debug:
     image: quay.io/ukhomeofficedigital/kd:v0.5.0
     commands:
-      - debug.sh
+      - ./debug.sh
     when:
       event: deployment
 
