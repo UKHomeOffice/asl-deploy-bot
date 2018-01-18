@@ -2,9 +2,6 @@ pipeline:
   trigger:
     image: quay.io/ukhomeofficedigital/drone-trigger:latest
     drone_server: https://drone.acp.homeoffice.gov.uk
-    drone_token: ${DRONE_TOKEN}
-    repo: ${REPO}
-    commit: ${COMMIT}
     deploy_to: ${DRONE_DEPLOY_TO}
     when:
       event: deployment
