@@ -1,14 +1,9 @@
 pipeline:
-  debug:
-    image: quay.io/ukhomeofficedigital/kd:v0.5.0
-    commands:
-      - ./debug.sh
-    when:
-      event: deployment
-
   trigger:
     image: quay.io/ukhomeofficedigital/drone-trigger:latest
     drone_server: https://drone.acp.homeoffice.gov.uk
     deploy_to: ${DRONE_DEPLOY_TO}
+    secrets:
+      - drone_token
     when:
       event: deployment

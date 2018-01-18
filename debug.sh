@@ -1,3 +1,0 @@
-echo $REPO
-echo $PLUGIN_NUMBER
-echo $DRONE_TOKEN
