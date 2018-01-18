@@ -1,5 +1,5 @@
 pipeline:
-  trigger_deploy:
+  trigger:
     image: quay.io/ukhomeofficedigital/drone-trigger:latest
     drone_server: https://drone.acp.homeoffice.gov.uk
     drone_token: ${DRONE_TOKEN}
