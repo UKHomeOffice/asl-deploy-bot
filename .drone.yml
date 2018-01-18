@@ -4,7 +4,7 @@ pipeline:
     drone_server: https://drone.acp.homeoffice.gov.uk
     drone_token: ${DRONE_TOKEN}
     repo: ${REPO}
-    number: ${BUILD_NUMBER}
+    number: ${NUMBER}
     deploy_to: ${DRONE_DEPLOY_TO}
     when:
       event: deployment
