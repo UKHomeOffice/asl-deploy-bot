@@ -4,10 +4,11 @@ const GitHub = require('@octokit/rest');
 
 class Commit {
 
-  constructor({ repo, branch, token }) {
+  constructor({ repo, branch, token, file }) {
     this.repo = repo;
     this.branch = branch || 'master';
     this.token = token;
+    this.file = file || 'versions.json'
   }
 
   update(service, version) {
@@ -43,7 +44,7 @@ class Commit {
   }
 
   readJSON () {
-    const url = `https://raw.githubusercontent.com/${this.repo}/${this.branch}/versions.json`;
+    const url = `https://raw.githubusercontent.com/${this.repo}/${this.branch}/${this.file}`;
     return request(url, { headers: { Authorization: `Token ${this.token}` } }).json;
   }
 
@@ -67,7 +68,7 @@ class Commit {
   createTree ({ sha, content }) {
     const params = {
       tree: [{
-        path: 'versions.json',
+        path: this.file,
         mode: '100644',
         type: 'blob',
         sha: content

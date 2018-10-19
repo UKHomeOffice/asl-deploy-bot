@@ -17,7 +17,8 @@ try {
 const client = new Client({
   repo: args.repo,
   branch: args.branch,
-  token: args.token || process.env.GITHUB_ACCESS_TOKEN
+  token: args.token || process.env.GITHUB_ACCESS_TOKEN,
+  file: args.file
 });
 
 return client.update(args.service, args.version)
