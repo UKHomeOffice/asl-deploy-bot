@@ -1,0 +1,24 @@
+{
+  "name": "asl-deploy-bot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/UKHomeOffice/asl-deploy-bot.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/UKHomeOffice/asl-deploy-bot/issues"
+  },
+  "homepage": "https://github.com/UKHomeOffice/asl-deploy-bot#readme",
+  "dependencies": {
+    "@octokit/rest": "^15.15.1",
+    "minimist": "^1.2.0",
+    "r2": "^2.0.1"
+  }
+}

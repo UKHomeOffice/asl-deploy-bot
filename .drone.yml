@@ -7,3 +7,13 @@ pipeline:
       - drone_token
     when:
       event: deployment
+
+  update:
+    image: node:10
+    secrets:
+      - github_access_token
+    commands:
+      - printenv
+      - bin/update --repo UKHomeOffice/asl-deployments --token ${GITHUB_ACCESS_TOKEN} --service ${REPO} --version ${PLUGIN_NUMBER}
+    when:
+      event: deployment

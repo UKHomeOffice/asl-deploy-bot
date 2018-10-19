@@ -1,0 +1,27 @@
+#!/usr/bin/env node
+
+const assert = require('assert');
+const args = require('minimist')(process.argv.slice(2));
+
+const Client = require('../client');
+
+try {
+  assert(args.repo, '--repo is required');
+  assert(args.service, '--service is required');
+  assert(args.version, '--version is required');
+} catch (e) {
+  console.error(e.message);
+  process.exit(1);
+}
+
+const client = new Client({
+  repo: args.repo,
+  branch: args.branch,
+  token: args.token || process.env.GITHUB_ACCESS_TOKEN
+});
+
+return client.update(args.service, args.version)
+  .catch((e) => {
+    console.error(e);
+    process.exit(1);
+  });
