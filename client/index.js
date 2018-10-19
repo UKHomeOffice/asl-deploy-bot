@@ -99,7 +99,11 @@ class Commit {
     const github = new GitHub();
     const repo = this.splitRepo();
     github.authenticate({ type: 'token', token: this.token });
-    return github.gitdata[action]({ ...params, ...repo });
+    return github.gitdata[action]({ ...params, ...repo })
+      .then(response => {
+        console.log(response);
+        return response;
+      });
   }
 
 }
