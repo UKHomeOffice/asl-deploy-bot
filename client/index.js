@@ -57,7 +57,6 @@ class Commit {
 
   createBlob ({ content, service, version }) {
     content = JSON.stringify({ ...content, [service]: version }, null, '  ');
-    console.log(content);
     const params = {
       content,
       encoding: 'utf-8'
@@ -88,7 +87,6 @@ class Commit {
   }
 
   pushCommit ({ commit }) {
-    console.log(commit);
     const params = {
       ref: `refs/heads/${this.branch}`,
       sha: commit
@@ -97,6 +95,7 @@ class Commit {
   }
 
   performGitAction (action, params) {
+    console.log({action, params});
     const github = new GitHub();
     const repo = this.splitRepo();
     return new Promise((resolve, reject) => {
