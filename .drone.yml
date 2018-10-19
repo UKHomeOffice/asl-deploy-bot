@@ -14,7 +14,6 @@ pipeline:
       - github_access_token
     commands:
       - npm ci
-      - bin/update --repo UKHomeOffice/asl-deployments --token $${GITHUB_ACCESS_TOKEN} --service asl-deploy-bot --version $${DRONE_COMMIT_SHA}
+      - bin/update --repo UKHomeOffice/asl-deployments --token $${GITHUB_ACCESS_TOKEN} --service $${REPO} --version $${DEPLOY_VERSION}
     when:
-      event: push
-      branch: master
+      event: deployment
