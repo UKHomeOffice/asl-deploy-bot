@@ -13,7 +13,6 @@ pipeline:
     secrets:
       - github_access_token
     commands:
-      - printenv
       - npm ci
       - bin/update --repo UKHomeOffice/asl-deployments --token $${GITHUB_ACCESS_TOKEN} --service $${REPO} --version $${PLUGIN_NUMBER}
     when:

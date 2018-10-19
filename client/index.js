@@ -57,6 +57,7 @@ class Commit {
 
   createBlob ({ content, service, version }) {
     content = JSON.stringify({ ...content, [service]: version }, null, '  ');
+    console.log(content);
     const params = {
       content,
       encoding: 'utf-8'
@@ -79,7 +80,7 @@ class Commit {
 
   createCommit ({ service, version, parent, tree }) {
     const params = {
-      tree: tree,
+      tree,
       parents: [ parent ],
       message: `Update ${service} to version ${version}`
     };
@@ -87,6 +88,7 @@ class Commit {
   }
 
   pushCommit ({ commit }) {
+    console.log(commit);
     const params = {
       ref: `refs/heads/${this.branch}`,
       sha: commit
