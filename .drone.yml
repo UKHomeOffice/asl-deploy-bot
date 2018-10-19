@@ -15,6 +15,6 @@ pipeline:
     commands:
       - printenv
       - npm ci
-      - bin/update --repo UKHomeOffice/asl-deployments --token ${GITHUB_ACCESS_TOKEN} --service ${REPO} --version ${PLUGIN_NUMBER}
+      - bin/update --repo UKHomeOffice/asl-deployments --token $${GITHUB_ACCESS_TOKEN} --service $${REPO} --version $${PLUGIN_NUMBER}
     when:
       event: deployment
