@@ -88,23 +88,18 @@ class Commit {
 
   pushCommit ({ commit }) {
     const params = {
-      ref: `refs/heads/${this.branch}`,
+      ref: `heads/${this.branch}`,
       sha: commit
     };
     return this.performGitAction('updateReference', params);
   }
 
   performGitAction (action, params) {
-    console.log({action, params});
+    console.log({ action, params });
     const github = new GitHub();
     const repo = this.splitRepo();
-    return new Promise((resolve, reject) => {
-      github.authenticate({ type: 'token', token: this.token });
-      github.gitdata[action]({ ...params, ...repo }, (err, response) => {
-        err ? reject(err) : resolve(response.data);
-      });
-    });
-
+    github.authenticate({ type: 'token', token: this.token });
+    return github.gitdata[action]({ ...params, ...repo });
   }
 
 }
