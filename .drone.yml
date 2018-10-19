@@ -14,6 +14,6 @@ pipeline:
       - github_access_token
     commands:
       - npm ci
-      - bin/update --repo UKHomeOffice/asl-deployments --token $${GITHUB_ACCESS_TOKEN} --service $${REPO} --version $${DEPLOY_VERSION}
+      - bin/update --repo UKHomeOffice/asl-deployments --token $${GITHUB_ACCESS_TOKEN} --service $${DEPLOY_SERVICE} --version $${DEPLOY_VERSION}
     when:
       event: deployment
