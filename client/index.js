@@ -91,7 +91,7 @@ class Commit {
       ref: `refs/heads/${this.branch}`,
       sha: commit
     };
-    return this.performGitAction('createReference', params);
+    return this.performGitAction('updateReference', params);
   }
 
   performGitAction (action, params) {
