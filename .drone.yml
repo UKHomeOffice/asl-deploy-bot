@@ -26,8 +26,8 @@ pipeline:
       - DOCKER_HOST=tcp://172.17.0.1:2375
     commands:
       - docker login -u="ukhomeofficedigital+asl" -p=$${DOCKER_PASSWORD} quay.io
-      - docker tag asl-deploy-bot quay.io/ukhomeofficedigital/asl-deploy-bot:$${DRONE_COMMIT_SHA}}
-      - docker push quay.io/ukhomeofficedigital/asl-deploy-bot:$${DRONE_COMMIT_SHA}}
+      - docker tag asl-deploy-bot quay.io/ukhomeofficedigital/asl-deploy-bot:$${DRONE_COMMIT_SHA}
+      - docker push quay.io/ukhomeofficedigital/asl-deploy-bot:$${DRONE_COMMIT_SHA}
       - docker tag asl-deploy-bot quay.io/ukhomeofficedigital/asl-deploy-bot:latest
       - docker push quay.io/ukhomeofficedigital/asl-deploy-bot:latest
     when:
