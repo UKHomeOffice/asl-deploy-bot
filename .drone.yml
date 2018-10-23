@@ -8,12 +8,28 @@ pipeline:
     when:
       event: deployment
 
-  update:
-    image: node:10
-    secrets:
-      - github_access_token
+  build:
+    image: docker:17.09.1
+    environment:
+      - DOCKER_HOST=tcp://172.17.0.1:2375
     commands:
-      - npm ci
-      - bin/update --repo UKHomeOffice/asl-deployments --token $${GITHUB_ACCESS_TOKEN} --service $${DEPLOY_SERVICE} --version $${DEPLOY_VERSION}
+      - docker build --build-arg -t asl-deploy-bot .
     when:
-      event: deployment
+      branch: master
+      event: push
+
+  image_to_quay:
+    image: docker:17.09.1
+    secrets:
+      - docker_password
+    environment:
+      - DOCKER_HOST=tcp://172.17.0.1:2375
+    commands:
+      - docker login -u="ukhomeofficedigital+asl" -p=$${DOCKER_PASSWORD} quay.io
+      - docker tag asl-deploy-bot quay.io/ukhomeofficedigital/asl-deploy-bot:$${DRONE_COMMIT_SHA}}
+      - docker push quay.io/ukhomeofficedigital/asl-deploy-bot:$${DRONE_COMMIT_SHA}}
+      - docker tag asl-deploy-bot quay.io/ukhomeofficedigital/asl-deploy-bot:latest
+      - docker push quay.io/ukhomeofficedigital/asl-deploy-bot:latest
+    when:
+      branch: master
+      event: push

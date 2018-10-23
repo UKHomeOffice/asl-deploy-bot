@@ -3,7 +3,7 @@
 const assert = require('assert');
 const args = require('minimist')(process.argv.slice(2));
 
-const Client = require('../client');
+const Updater = require('../lib/update');
 
 try {
   assert(args.repo, '--repo is required');
@@ -14,14 +14,14 @@ try {
   process.exit(1);
 }
 
-const client = new Client({
+const updater = Updater({
   repo: args.repo,
-  branch: args.branch,
-  token: args.token || process.env.GITHUB_ACCESS_TOKEN,
-  file: args.file
+  token: args.token,
+  file: args.file,
+  branch: args.branch || 'master'
 });
 
-return client.update(args.service, args.version)
+updater.update(args.service, args.version)
   .catch((e) => {
     console.error(e);
     process.exit(1);
