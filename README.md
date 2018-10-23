@@ -9,19 +9,19 @@ To update the version of your service in a drone build:
 ```yaml
 pipeline:
   update_manifest:
-  image: quay.io/ukhomeofficedigital/asl-deploy-bot:latest
-  secrets:
-    - github_access_token
-  commands:
-    - update
-      --repo ukhomeoffice/example-repo
-      --token $${GITHUB_ACCESS_TOKEN}
-      --file versions.yml
-      --service example-service
-      --version $${DRONE_COMMIT_SHA}
-  when:
-    branch: master
-    event: push
+    image: quay.io/ukhomeofficedigital/asl-deploy-bot:latest
+    secrets:
+      - github_access_token
+    commands:
+      - update
+        --repo ukhomeoffice/example-repo
+        --token $${GITHUB_ACCESS_TOKEN}
+        --file versions.yml
+        --service example-service
+        --version $${DRONE_COMMIT_SHA}
+    when:
+      branch: master
+      event: push
 ```
 
 ## Options
