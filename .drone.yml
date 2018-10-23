@@ -13,7 +13,7 @@ pipeline:
     environment:
       - DOCKER_HOST=tcp://172.17.0.1:2375
     commands:
-      - docker build --build-arg -t asl-deploy-bot .
+      - docker build -t asl-deploy-bot .
     when:
       branch: master
       event: push
