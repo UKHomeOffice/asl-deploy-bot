@@ -32,3 +32,9 @@ pipeline:
 * `service` _required_ - the name of the service to be updated
 * `version` _required_ - the version of the service to be updated
 * `branch` _optional_ - the branch to push the change to - default `master`
+
+## Manifest files
+
+Manifest files can be defined as JSON or YAML, and the type will be inferred from the file extension of the `file` option passed.
+
+If the file does not already exist in the repository defined then it will be created.
