@@ -19,7 +19,7 @@
   "dependencies": {
     "@lennym/commit": "^0.2.0",
     "js-yaml": "^3.13.1",
-    "minimist": "^1.2.3",
+    "minimist": "^1.2.6",
     "r2": "^2.0.1"
   }
 }
